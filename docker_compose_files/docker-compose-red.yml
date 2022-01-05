@@ -1,7 +1,7 @@
 version: '3.0'
 services:
   node-red:
-    image: nodered/node-red:latest
+    image: nodered/node-red:2.1.4-1
     user: "${MYUID}:${MYGID}"
     environment:
       TZ: "America/Sao_Paulo"
