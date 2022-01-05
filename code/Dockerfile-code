@@ -1,0 +1,11 @@
+FROM codercom/code-server
+
+COPY requirements.txt .
+
+USER root
+RUN apt-get update && apt-get install --no-install-recommends -y python3-venv
+RUN python3 -m venv /opt/venv
+RUN /opt/venv/bin/pip install -r requirements.txt
+
+# Vscode Extensions
+RUN code-server --install-extension ms-python.python --force

@@ -1,0 +1,18 @@
+version: '3.0'
+services:
+  codeserver:
+      build: 
+        context: ../code
+        dockerfile: Dockerfile-code
+      container_name: code
+      volumes:
+          - "/home/${USER}/Documents/repos:/home/coder/code-server"
+      #     - "${PWD}/.config:/home/coder/.config"
+      user: "${MYUID}:${MYGID}"
+      environment:
+        PASSWORD: password
+        DOCKER_USER: "${USER}"
+      ports:
+        - "8989:8080"
+      command: code-server --disable-telemetry
+      restart: unless-stopped
