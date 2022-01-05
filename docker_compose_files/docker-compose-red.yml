@@ -1,0 +1,12 @@
+version: '3.0'
+services:
+  node-red:
+    image: nodered/node-red:latest
+    user: "${MYUID}:${MYGID}"
+    environment:
+      TZ: "America/Sao_Paulo"
+      DOCKER_USER: "${USER}"
+    ports:
+      - "1880:1880"
+    volumes:
+      - ../data/node-red-data:/data
