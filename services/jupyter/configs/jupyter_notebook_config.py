@@ -22,6 +22,6 @@ c.ConfigurableHTTPProxy.command = [
     "--redirect-port",
     "80",
 ]
-c.NotebookApp.terminado_settings = {"shell_command": ["/usr/bin/bash"]}
+# c.NotebookApp.terminado_settings = {"shell_command": ["/usr/bin/bash"]}
 # Disable Jedi in IPython, to improve the performance of autocompletion.
 c.Completer.use_jedi = False
