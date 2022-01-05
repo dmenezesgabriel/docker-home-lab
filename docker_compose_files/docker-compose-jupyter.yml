@@ -1,15 +1,15 @@
-version: '3.0'
+version: "3.0"
 services:
-  node-red:
-    image: nodered/node-red:2.1.4-1
-    user: "${MYUID}:${MYGID}"
-    environment:
-      TZ: "America/Sao_Paulo"
-      DOCKER_USER: "${USER}"
-    ports:
-      - "1880:1880"
+  jupyter-lab:
+    build:
+      context: ../services/jupyter
+      dockerfile: Dockerfile
     volumes:
-      - ../data/node-red-data:/data
+      - "/home/${USER}/Documents/repos/notebooks:/home/lab/nbs"
+    ports:
+      - 8888:8888
+    restart: unless-stopped
+    command: jupyter lab --no-browser --allow-root --port=8888
 # --------------------------------------------------------------------------- #
 # Logging
 # --------------------------------------------------------------------------- #

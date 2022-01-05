@@ -1,18 +1,26 @@
 version: '3.0'
 services:
   codeserver:
-      build: 
-        context: ../code
-        dockerfile: Dockerfile-code
-      container_name: code
-      volumes:
-          - "/home/${USER}/Documents/repos:/home/coder/code-server"
-          - "../code/settings/settings.json:/root/.local/share/code-server/User/settings.json"
-      #     - "${PWD}/.config:/home/coder/.config"
-      user: "${MYUID}:${MYGID}"
-      environment:
-        PASSWORD: password
-      ports:
-        - "8989:8080"
-      command: code-server --disable-telemetry
-      restart: unless-stopped
+    build: 
+      context: ../services/code
+      dockerfile: Dockerfile
+    container_name: code
+    volumes:
+        - "/home/${USER}/Documents/repos:/home/coder/code-server"
+        - "../code/settings/settings.json:/root/.local/share/code-server/User/settings.json"
+    #     - "${PWD}/.config:/home/coder/.config"
+    user: "${MYUID}:${MYGID}"
+    environment:
+      PASSWORD: password
+    ports:
+      - "8989:8080"
+    command: code-server --disable-telemetry
+    restart: unless-stopped
+# --------------------------------------------------------------------------- #
+# Logging
+# --------------------------------------------------------------------------- #
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "1k"
+        max-file: "3"
