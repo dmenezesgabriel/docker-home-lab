@@ -1,7 +1,6 @@
 FROM codercom/code-server:3.12.0
 
 COPY requirements.txt .
-# COPY settings/settings.json /root/.local/share/code-server/User/settings.json
 
 USER root
 RUN apt-get update && apt-get install --no-install-recommends -y python3-venv
@@ -29,4 +28,4 @@ RUN code-server --install-extension ms-python.python --force \
     # Icons material icons
     --install-extension pkief.material-icon-theme --force \
     # Trailing spaces
-    --install-extension shardulm94.trailing-spaces --force
+    --install-extension shardulm94.trailing-spaces --force \

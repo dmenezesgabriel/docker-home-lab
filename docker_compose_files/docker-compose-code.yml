@@ -12,7 +12,6 @@ services:
       user: "${MYUID}:${MYGID}"
       environment:
         PASSWORD: password
-        DOCKER_USER: "${USER}"
       ports:
         - "8989:8080"
       command: code-server --disable-telemetry
