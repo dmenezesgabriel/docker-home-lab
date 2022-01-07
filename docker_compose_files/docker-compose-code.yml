@@ -7,7 +7,7 @@ services:
     container_name: code
     volumes:
         - "/home/${USER}/Documents/repos:/home/coder/code-server"
-        - "${PWD}/code/settings/settings.json:/root/.local/share/code-server/User/settings.json"
+        - "${PWD}/services_settings/code/settings.json:/root/.local/share/code-server/User/settings.json"
     #     - "${PWD}/.config:/home/coder/.config"
     user: "${MYUID}:${MYGID}"
     environment:
