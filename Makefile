@@ -14,10 +14,12 @@ run-all:
 	MYUID=$(id -u) MYGID=$(id -g) docker-compose -f docker_compose_files/docker-compose-code.yml \
 												 -f docker_compose_files/docker-compose-jupyter.yml \
 												 -f docker_compose_files/docker-compose-red.yml \
+												 -f docker_compose_files/docker-compose-portainer.yml \
 												 up -d
 
 down-all:
 	MYUID=$(id -u) MYGID=$(id -g) docker-compose -f docker_compose_files/docker-compose-code.yml \
 												 -f docker_compose_files/docker-compose-jupyter.yml \
 												 -f docker_compose_files/docker-compose-red.yml \
+												 -f docker_compose_files/docker-compose-portainer.yml \
 												 down

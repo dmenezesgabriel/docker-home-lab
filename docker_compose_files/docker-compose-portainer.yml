@@ -3,13 +3,11 @@ services:
   portainer:
     container_name: portainer
     image: portainer/portainer-ce
-    restart: always
-    networks: 
-      - management
+    restart: unless-stopped
     command: -H unix:///var/run/docker.sock
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - $DOCKERDIR/portainer/data:/data
+      - ../services_data/portainer_data:/data
     ports:
       - "9000:9000"
 # --------------------------------------------------------------------------- #
