@@ -3,7 +3,7 @@ services:
   codeserver:
     build: 
       context: ../services/code
-      dockerfile: Dockerfile
+      dockerfile: ${DOCKER_FILE:-Dockerfile}
     container_name: code
     volumes:
         - "/home/${USER}/Documents/repos:/home/coder/code-server"
