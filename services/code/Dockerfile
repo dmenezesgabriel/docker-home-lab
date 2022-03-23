@@ -2,25 +2,33 @@ FROM codercom/code-server:4.1.0
 
 COPY requirements.txt .
 
+# --------------------------------------------------------------------------- #
+# Python virtual environment
+# --------------------------------------------------------------------------- #
 USER root
 RUN apt-get update && apt-get install --no-install-recommends -y python3-venv
 RUN python3 -m venv /opt/venv
 RUN /opt/venv/bin/pip install -r requirements.txt
-
+# --------------------------------------------------------------------------- #
+# Install Docker command line utility dependencies
+# --------------------------------------------------------------------------- #
 RUN apt-get install -y \
     ca-certificates \
     curl \
     gnupg \
     lsb-release
-
+# --------------------------------------------------------------------------- #
+# Install Docker command line utility package
+# --------------------------------------------------------------------------- #
 RUN curl -fsSL https://download.docker.com/linux/debian/gpg | gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg && \
     echo \
     "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/debian \
     $(lsb_release -cs) stable" | tee /etc/apt/sources.list.d/docker.list > /dev/null && \
     apt-get update && \
     apt-get install -y docker-ce-cli
-
-# Vscode Extensions
+# --------------------------------------------------------------------------- #
+# Install extensions
+# --------------------------------------------------------------------------- #
 RUN code-server \
     # --install-extension ms-python.python --force \
     # Auto rename HTML tags

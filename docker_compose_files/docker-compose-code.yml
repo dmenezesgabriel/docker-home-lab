@@ -1,4 +1,4 @@
-version: '3.0'
+version: "3.0"
 services:
   codeserver:
     build:
@@ -6,21 +6,21 @@ services:
       dockerfile: ${DOCKER_FILE:-Dockerfile}
     container_name: code
     volumes:
-        - "/home/${USER}/Documents/repos:/home/coder/code-server"
-        - "${PWD}/services_settings/code/settings.json:/root/.local/share/code-server/User/settings.json"
-        - "${PWD}/services_settings/code/keybindings.json:/root/.local/share/code-server/User/keybindings.json"
-        - "/var/run/docker.sock:/var/run/docker.sock"
+      - "/home/${USER}/Documents/repos:/home/coder/code-server"
+      - "${PWD}/services_settings/code/settings.json:/root/.local/share/code-server/User/settings.json"
+      - "${PWD}/services_settings/code/keybindings.json:/root/.local/share/code-server/User/keybindings.json"
+      - "/var/run/docker.sock:/var/run/docker.sock"
     #     - "${PWD}/.config:/home/coder/.config"
     user: "${MYUID}:${MYGID}"
     environment:
       PASSWORD: password
     ports:
       - "8989:8080"
-    command: code-server --disable-telemetry
+    command: code-server --disable-telemetry --cert
     restart: unless-stopped
-# --------------------------------------------------------------------------- #
-# Logging
-# --------------------------------------------------------------------------- #
+    # ----------------------------------------------------------------------- #
+    # Logging
+    # ----------------------------------------------------------------------- #
     logging:
       driver: "json-file"
       options:
