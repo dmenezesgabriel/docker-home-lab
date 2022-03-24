@@ -101,5 +101,7 @@
     "files.associations": {
       "*.yml": "yaml"
     },
-    "terminal.integrated.shell.osx": "/bin/bash"
+    "terminal.integrated.shell.osx": "/bin/bash",
+    "livePreview.notifyOnOpenLooseFile": false,
+    "liveServer.settings.donotShowInfoMsg": true
   }
