@@ -1,0 +1,21 @@
+version: "3.0"
+services:
+  webtop:
+    image: lscr.io/linuxserver/webtop:ubuntu-mate
+    container_name: webtop
+    security_opt:
+      - seccomp:unconfined #optional
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Sao_Paulo
+      - SUBFOLDER=/ #optional
+      - KEYBOARD=en-us-qwerty #optional
+      - AUTO_LOGIN=false
+    volumes:
+      - ../services_data/webtop_data:/config
+      - /var/run/docker.sock:/var/run/docker.sock #optional
+    ports:
+      - 9090:3000
+    restart: unless-stopped
+    privileged: true
