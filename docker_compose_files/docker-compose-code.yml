@@ -16,6 +16,7 @@ services:
       PASSWORD: password
     ports:
       - "8989:8080"
+      - "5500:5500"
     command: code-server --disable-telemetry --cert
     restart: unless-stopped
     # ----------------------------------------------------------------------- #
